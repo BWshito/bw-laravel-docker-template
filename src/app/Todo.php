@@ -8,6 +8,7 @@ class Todo extends Model
 {
     protected $table = 'todos';
 
+    // fill()によって代入可能なプロパティ
     protected $fillable = [
         'content',
     ];

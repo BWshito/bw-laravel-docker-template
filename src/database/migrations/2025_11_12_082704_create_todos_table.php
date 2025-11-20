@@ -13,6 +13,7 @@ class CreateTodosTable extends Migration
      */
     public function up()
     {
+        // テーブル情報
         Schema::create('todos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('content');

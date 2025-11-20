@@ -11,8 +11,10 @@ class TodoSeeder extends Seeder
      */
     public function run()
     {
+        // 該当テーブルのレコードをすべて削除
         DB::table('todos')->truncate();
 
+        // テストデータ
         $testData = [
            [
                 'content' => 'PHP Appセクションを終える',
@@ -26,6 +28,7 @@ class TodoSeeder extends Seeder
             ],
         ];
 
+        // 引数のデータをテーブルに投入するINSERT文を実行
         DB::table('todos')->insert($testData);
     }
 }
