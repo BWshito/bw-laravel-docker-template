@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 一覧画面のルート定義(GET)
+Route::get('/todo', 'TodoController@index')->name('todo.index');
+// 新規作成画面のルート定義(GET)
+Route::get('/todo/create', 'TodoController@create')->name('todo.create');
+// 新規作成画面のルート定義(POST)
+Route::post('/todo', 'TodoController@store')->name('todo.store');
