@@ -11,7 +11,7 @@ class TodoController extends Controller
     public function index()
     {
         $todo = new Todo(); //TodoModelをインスタンス化
-        $todos = $todo->all();
+        $todos = $todo->all(); //todosテーブルからすべてのレコードを取得
 
         return view('todo.index', ['todos' => $todos]);
     }
@@ -32,5 +32,14 @@ class TodoController extends Controller
         $todo->save();
 
         return redirect()->route('todo.index');
+    }
+
+    // 詳細ボタンが押下されたときの処理
+    public function show($id)
+    {
+        $model = new Todo();
+        $todo = $model->find($id);
+
+        return view('todo.show', ['todo' => $todo]);
     }
 }
