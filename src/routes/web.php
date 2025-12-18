@@ -11,11 +11,13 @@
 |
 */
 
-// 一覧画面のルート定義(GET)
+// 一覧画面のルート定義
 Route::get('/todo', 'TodoController@index')->name('todo.index');
 // 新規作成画面のルート定義(GET)
 Route::get('/todo/create', 'TodoController@create')->name('todo.create');
 // 新規作成画面のルート定義(POST)
 Route::post('/todo', 'TodoController@store')->name('todo.store');
-// 詳細画面のルート定義(GET)
+// 詳細画面のルート定義
 Route::get('/todo/{id}', 'TodoController@show')->name('todo.show');
+// 編集画面のルート定義
+Route::get('/todo/{id}/edit', 'TodoController@edit')->name('todo.edit');

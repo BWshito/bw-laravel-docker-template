@@ -7,15 +7,12 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-    //コンストラクタインジェクション
-    class TodoController extends Controller
-    {
-        private $todo;
+    // コンストラクタインジェクション
+    private $todo;
 
-        public function __construct(Todo $todo)
-        {
-            $this->todo = $todo;
-        }
+    public function __construct(Todo $todo)
+    {
+        $this->todo = $todo;
     }
 
     // 一覧画面に全てのToDoを表示する処理
@@ -47,8 +44,15 @@ class TodoController extends Controller
     public function show($id)
     {
         $todo = $this->todo->find($id);
-        return view('todo.show', ['todo' => $todo]);
 
         return view('todo.show', ['todo' => $todo]);
+    }
+
+    // 編集ボタンが押下されたときの処理
+    public function edit($id)
+    {
+        $todo = $this->todo->find($id);
+
+        return view('todo.edit', ['todo' => $todo]);
     }
 }
