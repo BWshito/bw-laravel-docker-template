@@ -32,7 +32,7 @@ class TodoController extends Controller
     // 新規作成画面で作成ボタンが押下されたときの処理
     public function store(Request $request)
     {
-        $inputs = $request->all(); //入力された全ての値の取得
+        $inputs = $request->all();
 
         $this->todo->fill($inputs);
         $this->todo->save();
@@ -54,5 +54,17 @@ class TodoController extends Controller
         $todo = $this->todo->find($id);
 
         return view('todo.edit', ['todo' => $todo]);
+    }
+
+    // 更新ボタンが押下されたときの処理
+    public function update(Request $request, $id)
+    {
+        $inputs = $request->all();
+
+        $todo = $this->todo->findOrFail($id);
+        $todo->content = $inputs['content'];
+        $todo->save();
+
+        return redirect()->route('todo.show', $todo->id);
     }
 }
