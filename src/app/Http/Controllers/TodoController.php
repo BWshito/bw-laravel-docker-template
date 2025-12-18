@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodoRequest;
 use App\Todo;
-use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
@@ -30,7 +30,7 @@ class TodoController extends Controller
     }
 
     // 新規作成画面で作成ボタンが押下されたときの処理
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
         $inputs = $request->all();
 
@@ -57,7 +57,7 @@ class TodoController extends Controller
     }
 
     // 更新ボタンが押下されたときの処理
-    public function update(Request $request, $id)
+    public function update(TodoRequest $request, $id)
     {
         $inputs = $request->all();
 
