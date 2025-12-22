@@ -61,10 +61,19 @@ class TodoController extends Controller
     {
         $inputs = $request->all();
 
-        $todo = $this->todo->findOrFail($id);
+        $todo = $this->todo->find($id);
         $todo->content = $inputs['content'];
         $todo->save();
 
         return redirect()->route('todo.show', $todo->id);
+    }
+
+    // 削除ボタンが押下されたときの処理
+    public function delete($id)
+    {
+        $todo = $this->todo->find($id);
+        $todo->delete();
+
+        return redirect()->route('todo.index');
     }
 }

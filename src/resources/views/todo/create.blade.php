@@ -12,7 +12,7 @@
               <div class="col-md-6">
                   <input type="text" class="form-control @if($errors->has('content')) border-danger @endif" name="content" value="">
                   @if($errors->has('content'))
-                  <span class="text-danger">{{ $errors->first('content') }}</span>
+                    <span class="text-danger">{{ $errors->first('content') }}</span>
                   @endif
               </div>
             </div>
