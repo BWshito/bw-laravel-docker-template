@@ -7,9 +7,9 @@ use App\Todo;
 
 class TodoController extends Controller
 {
-    // コンストラクタインジェクション
     private $todo;
 
+    // コンストラクタインジェクション
     public function __construct(Todo $todo)
     {
         $this->todo = $todo;
@@ -62,7 +62,8 @@ class TodoController extends Controller
         $inputs = $request->all();
 
         $todo = $this->todo->find($id);
-        $todo->content = $inputs['content'];
+        
+        $todo->fill($inputs);
         $todo->save();
 
         return redirect()->route('todo.show', $todo->id);
